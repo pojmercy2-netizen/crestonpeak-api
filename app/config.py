@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     # App
-    APP_NAME: str = "Noble Edge ROI"
+    APP_NAME: str = "CRESTONPEAK"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
     SECRET_KEY: str
@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     ADMIN_EMAIL: str
 
     # Frontend
-    FRONTEND_URL: str = "http://localhost:3000"
+    FRONTEND_URL: str = "https://crestonpeak.com"
 
     # Crypto wallet addresses (admin-owned)
     BTC_WALLET: str
