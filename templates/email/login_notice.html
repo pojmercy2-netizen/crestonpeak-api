@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>New Sign-In to {{ project_name }}</title>
+</head>
+<body style="margin:0;padding:0;background-color:#07090F;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;-webkit-font-smoothing:antialiased;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#07090F;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <!-- Card -->
+        <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background-color:#0E1525;border:1px solid #1E293B;border-radius:16px;overflow:hidden;">
+
+          <!-- HEADER -->
+          <tr>
+            <td style="background-color:#0A0F1D;padding:36px 40px 30px;text-align:center;border-bottom:2px solid #3B82F6;">
+              <p style="margin:0 0 16px 0;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A2B585;">{{ project_name }}</p>
+              <!-- Lock icon -->
+              <table width="64" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto 18px auto;">
+                <tr>
+                  <td width="64" height="64" align="center" style="width:64px;height:64px;background-color:#172554;border-radius:50%;font-size:28px;color:#60A5FA;font-weight:900;line-height:64px;text-align:center;">&#128274;</td>
+                </tr>
+              </table>
+              <p style="display:inline-block;margin:0 0 16px 0;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#60A5FA;background-color:#172554;border:1px solid #1E3A8A;padding:6px 16px;border-radius:100px;">Sign-In Detected</p>
+              <p style="margin:8px 0 0 0;font-size:24px;font-weight:700;color:#FFFFFF;line-height:1.3;">New Sign-In to Your<br><span style="color:#60A5FA;">{{ project_name }} Account</span></p>
+            </td>
+          </tr>
+
+          <!-- CONTENT -->
+          <tr>
+            <td style="padding:36px 40px;">
+              <p style="margin:0 0 24px 0;font-size:16px;color:#C9D4E8;line-height:1.7;">
+                Hello <strong style="color:#FFFFFF;">{{ name }}</strong>,<br><br>
+                We detected a new sign-in to your <strong style="color:#A2B585;">{{ project_name }}</strong> account. If this was you, no further action is needed.
+              </p>
+
+              <!-- Sign-in details block -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#020617;border:1px solid #1E293B;border-radius:12px;margin-bottom:28px;">
+                <tr>
+                  <td style="padding:28px;">
+                    <p style="margin:0 0 16px 0;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8A9BB8;">Sign-In Details</p>
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding:10px 0;font-size:14px;color:#8A9BB8;font-weight:500;width:40%;border-bottom:1px solid #1A2235;">Date &amp; Time</td>
+                        <td style="padding:10px 0;font-size:14px;color:#E2E8F0;font-weight:600;text-align:right;border-bottom:1px solid #1A2235;">{{ login_time }}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px 0;font-size:14px;color:#8A9BB8;font-weight:500;border-bottom:1px solid #1A2235;">IP Address</td>
+                        <td style="padding:10px 0;font-size:14px;color:#E2E8F0;font-weight:600;text-align:right;font-family:monospace;border-bottom:1px solid #1A2235;">{{ ip_address }}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px 0;font-size:14px;color:#8A9BB8;font-weight:500;">Account</td>
+                        <td style="padding:10px 0;font-size:14px;color:#E2E8F0;font-weight:600;text-align:right;">{{ email }}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Warning block -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#1A0A0A;border:1px solid #3D1515;border-radius:10px;margin-bottom:28px;">
+                <tr>
+                  <td style="padding:18px 20px;">
+                    <p style="margin:0;font-size:14px;color:#F87171;line-height:1.65;">
+                      <strong>&#9888; Wasn't you?</strong> If you did not sign in, your account may be compromised. Please change your password immediately and contact our support team.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- CTA buttons -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+                <tr>
+                  <td align="center" style="padding-bottom:12px;">
+                    <a href="{{ dashboard_url }}" style="display:inline-block;background-color:#3F5933;color:#FFFFFF;font-size:14px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;padding:14px 36px;border-radius:8px;text-decoration:none;">Go to Dashboard</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <a href="{{ change_password_url }}" style="display:inline-block;background-color:transparent;color:#F87171;font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:12px 28px;border-radius:8px;text-decoration:none;border:1px solid #3D1515;">Secure My Account</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="padding:24px 40px;border-top:1px solid #1A2235;text-align:center;background-color:#090D18;">
+              <p style="margin:0;font-size:12px;color:#4A5A74;line-height:1.7;">
+                This is an automated security notification from <strong style="color:#6B7A99;">{{ project_name }}</strong>.<br>
+                If you did not sign in, please contact us immediately.<br>
+                &copy; 2026 {{ project_name }}. All rights reserved.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

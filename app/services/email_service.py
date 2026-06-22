@@ -63,9 +63,36 @@ async def send_welcome_email(email: str, name: str) -> None:
         template_body={
             "project_name": settings.APP_NAME,
             "name": name,
-            "login_url": f"{settings.FRONTEND_URL}/auth/login",
+            "login_url": f"{settings.FRONTEND_URL}/login",
         },
     )
+
+
+async def send_login_notice_email(
+    email: str,
+    name: str,
+    ip_address: Optional[str] = None,
+    login_time: Optional[str] = None,
+) -> None:
+    """Send a sign-in security notification to the user."""
+    from datetime import datetime, timezone
+    time_str = login_time or datetime.now(timezone.utc).strftime("%B %d, %Y at %H:%M UTC")
+    ip_str = ip_address or "Unknown"
+    await send_email(
+        email_to=email,
+        subject=f"New Sign-In to Your {settings.APP_NAME} Account",
+        template_name="login_notice.html",
+        template_body={
+            "project_name": settings.APP_NAME,
+            "name": name,
+            "email": email,
+            "login_time": time_str,
+            "ip_address": ip_str,
+            "dashboard_url": f"{settings.FRONTEND_URL}/dashboard",
+            "change_password_url": f"{settings.FRONTEND_URL}/forgot-password",
+        },
+    )
+
 
 
 async def send_plain_email(

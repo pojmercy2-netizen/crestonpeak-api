@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     ADMIN_EMAIL: str
 
     # Frontend
-    FRONTEND_URL: str = "https://crestonpeak.com"
+    FRONTEND_URL: str = "https://crestonpeak.org"
 
     # Crypto wallet addresses (admin-owned)
     BTC_WALLET: str

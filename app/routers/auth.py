@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.schemas.auth import Login, Register, PasswordResetRequest, PasswordReset
 from app.services.auth_service import register_user, authenticate_user
 from app.dependencies import get_db
-from app.services.email_service import send_welcome_email, send_admin_activity_notification, send_password_reset_email
+from app.services.email_service import send_welcome_email, send_admin_activity_notification, send_password_reset_email, send_login_notice_email
 from app.security.hashing import get_password_hash
 from datetime import datetime, timezone, timedelta
 import uuid
@@ -36,12 +36,20 @@ async def login(login_data: Login, request: Request, background_tasks: Backgroun
     user = user_query.scalars().first()
     if user and user.role != "admin" and user.role != "superadmin":
         name = user.full_name if hasattr(user, "full_name") and user.full_name else user.username
+        # Notify admin
         background_tasks.add_task(
             send_admin_activity_notification,
             email=user.email,
             name=name,
             activity_type="logged into their account",
             ip_address=ip_address
+        )
+        # Send sign-in notice to the user
+        background_tasks.add_task(
+            send_login_notice_email,
+            email=user.email,
+            name=name,
+            ip_address=ip_address,
         )
     return {
         "success": True,
